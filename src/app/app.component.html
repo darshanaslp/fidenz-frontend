@@ -1,0 +1,60 @@
+<div class="container p-4 webpage">
+  <div class="row">
+    <div class="col-md-6">
+      <div *ngIf="alert" [ngClass] ="FadeOutLink()" class="alert alert-danger" role="alert">
+        <h4> {{ alert }}</h4>
+      </div>
+
+      <div class="card card-body">
+        <form (submit)="submitLocation(cityName)">
+          <div class="form-group">
+           
+            <input type="text" class="form-control" placeholder="City name" #cityName>
+          </div>
+
+          <button class="btn text-white btn-block mt-2">Enter City</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="weather" class="card card-body">
+        <div class="card text-center card text-white bg-primary mb-3">
+          <div class="card-header">County Or City Weather</div>
+          <div class="card-body">
+            <h5 class="card-title">{{ weather.name }} - {{ weather.sys.country }}</h5>
+            <p class="card-text">
+              Temperature: {{ weather.main.temp }} ºC |
+              <img src='http://openweathermap.org/img/wn/{{ weather.weather[0].icon }}@2x.png' />
+            </p>
+          </div>
+          <div class="card-footer text-white bg-dark">
+            <div class="row">
+              <div class="col-md-4">
+                <p>Pressure: {{ weather.main.pressure }}</p>
+              </div>
+              <div class="col-md-4">
+                <p>Wind: {{ weather.wind.speed }}</p>
+                <p>Degree: {{ weather.wind.deg }}</p>
+              </div>
+              <div class="col-md-4">
+                <p>Descrip: {{ weather.weather[0].description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="weatherError" class="card card-body text-white bg-primary mb-3">
+        <h1>Ups!</h1>
+        <p> {{ weatherError }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="bg-light text-center text-lg-start">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+    © 2021 Copyright:
+    <a class="text-dark">Fidenez Technologies</a>
+  </div>
+  <!-- Copyright -->
+</footer>
